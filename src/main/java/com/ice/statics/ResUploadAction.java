@@ -159,7 +159,7 @@ public class ResUploadAction {
 		int ed = fileName.lastIndexOf(".");
 		if(ed > 0) {
 			subfix = fileName.substring(ed);
-			prefix = fileName.substring(0, ed - 1);
+			prefix = fileName.substring(0, ed);
 		}
 		return prefix + "_" + newName + subfix;
 	}

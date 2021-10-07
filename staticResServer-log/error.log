@@ -1,6 +1,0 @@
-2021-10-06 17:34:01 [ERROR] [com.ice.statics.timer.ZipFileJob:41] - 文件打包失败，请联系管理员~~~ 
-java.lang.ClassCastException: java.lang.String cannot be cast to java.util.List
-	at com.ice.statics.timer.ZipFileJob.scheduleZipFile(ZipFileJob.java:68)
-	at com.ice.statics.timer.ZipFileJob.execute(ZipFileJob.java:35)
-	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
-	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)

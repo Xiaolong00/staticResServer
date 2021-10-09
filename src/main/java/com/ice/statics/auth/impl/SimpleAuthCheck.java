@@ -13,6 +13,7 @@ public class SimpleAuthCheck implements AuthCheck {
 
 	private PropertiesProvider pp = PropertiesProvider.getInstance("/sys_config.properties");
 	
+	@Override
 	public boolean check(Map<String, String[]> pm) {
 		String app_code =  pm.get("app_code") == null ? "" : pm.get("app_code")[0];
 		String app_pwd = pm.get("app_pwd") == null ? "" : pm.get("app_pwd")[0];

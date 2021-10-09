@@ -40,6 +40,7 @@ public class FileUtils {
 			String fileName = request.getSession().getServletContext()
 					.getRealPath("/")
 					+ relativeFilePath;
+			System.out.println("文件路径"+fileName);
 			fileName = fileName.replace("\\", "/");// 统一分隔符格式
 			File file = new File(fileName);
 			// 如果文件不存在
@@ -63,13 +64,12 @@ public class FileUtils {
 			String simpleName = fileName
 					.substring(fileName.lastIndexOf("/") + 1);
 			String newFileName = new String(simpleName.getBytes(), "ISO8859-1");
-			response.setHeader("Content-disposition", "attachment;filename="
-					+ newFileName);
+			//inline，默认值，表示回复中的消息体会以页面的一部分或者整个页面的形式展示。
+			// attachment意味着消息体应该被下载到本地，filename是要传送的文件的初始名称的字符串
+			response.setHeader("Content-disposition", "attachment;filename=" + newFileName);
 			fis = new FileInputStream(file);
-			bis = new BufferedInputStream(
-					fis);
-			bos = new BufferedOutputStream(
-					response.getOutputStream());
+			bis = new BufferedInputStream(fis);
+			bos = new BufferedOutputStream(response.getOutputStream());
 
 			byte[] buffer = new byte[1024];
 			int length = 0;
@@ -89,8 +89,7 @@ public class FileUtils {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		finally {
+		} finally {
 			if (fis != null) {
 				safeClose(fis);
 			}

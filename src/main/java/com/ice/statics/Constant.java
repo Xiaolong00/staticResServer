@@ -1,6 +1,6 @@
 package com.ice.statics;
 
-import com.ice.statics.utils.FileUtils;
+import com.ice.statics.utils.StaticLocation;
 import ice.tool.PropertiesProvider;
 import ice.tool.exception.CommonException;
 import org.apache.commons.lang3.StringUtils;
@@ -60,7 +60,8 @@ public class Constant {
 		}
 
 		//初始化本地路径
-		String resLocation = FileUtils.read("/application.properties", "spring.resources.static-locations");
+		String resLocation = StaticLocation.getInstance().getStaticLocations();
+//		String resLocation = FileUtils.read("/application.properties", "spring.resources.static-locations");
 //		String active = FileUtils.read("/application.properties", "spring.profiles.active");
 //		String resLocation = FileUtils.read("/application"+active+".properties", "spring.resources.static-locations");
 		if(StringUtils.isNotBlank(resLocation)){

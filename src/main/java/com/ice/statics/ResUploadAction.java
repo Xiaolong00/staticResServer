@@ -1,14 +1,12 @@
 package com.ice.statics;
 
 import com.ice.statics.auth.AuthCheck;
-import com.ice.statics.utils.FileUtils;
 import ice.tool.GsonUtil;
 import ice.tool.PropertiesProvider;
 import ice.tool.exception.CommonException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -42,7 +40,6 @@ public class ResUploadAction {
             throw new CommonException("找不到系统文件：/sys_config.properties");
         }
     }
-
 
     @RequestMapping("/download")
     public void download(HttpServletRequest req, HttpServletResponse resp, String relativeFilePath) {
@@ -79,7 +76,9 @@ public class ResUploadAction {
             outputStream.flush();
             outputStream.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("io异常",e);
+        } catch (Exception e) {
+            log.error("下载异常",e);
         }
     }
 
